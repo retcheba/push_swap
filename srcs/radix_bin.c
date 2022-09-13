@@ -1,27 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   radix_bin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 18:23:50 by retcheba          #+#    #+#             */
-/*   Updated: 2022/09/13 17:20:13 by retcheba         ###   ########.fr       */
+/*   Created: 2022/09/13 16:52:07 by retcheba          #+#    #+#             */
+/*   Updated: 2022/09/13 20:33:30 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "../libft/libft.h"
-
-typedef struct s_stack	t_stack;
-
-struct s_stack
-{
-	int				nb;
-	unsigned int	index;
-	t_stack			*next;
-};
-
-#endif
+void	radix_bin(t_stack *list)
