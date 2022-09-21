@@ -6,24 +6,11 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:44:03 by retcheba          #+#    #+#             */
-/*   Updated: 2022/09/20 16:34:00 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/09/22 00:52:16 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	bin_len(unsigned int n)
-{
-	int	i;
-
-	i = 0;
-	while (n > 0)
-	{
-		n = n / 2;
-		i++;
-	}
-	return (i);
-}
 
 t_stack	*ft_next(t_stack *list_a)
 {
@@ -36,17 +23,28 @@ t_stack	*ft_next(t_stack *list_a)
 	return (list_a);
 }
 
+static t_stack	*ft_raf(t_stack *list)
+{
+	t_stack	*new;
+
+	new = new_link(list->nb, list->index);
+	list = ft_next(list);
+	list = add_link_bottom(list, new);
+	return (list);
+}
+
 t_stack	*ft_rra(t_stack *list)
 {
-	t_stack	*new1;
-	t_stack	*new2;
+	int	i;
+	int	len;
 
-	new1 = new_link(list->nb, list->index);
-	list = ft_next(list);
-	list = add_link_bottom(list, new1);
-	new2 = new_link(list->nb, list->index);
-	list = ft_next(list);
-	list = add_link_bottom(list, new2);
+	i = 0;
+	len = len_list(list);
+	while (i < len - 1)
+	{
+		list = ft_raf(list);
+		i++;
+	}
 	ft_printf("rra\n");
 	return (list);
 }

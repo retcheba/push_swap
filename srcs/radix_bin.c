@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+static int	bin_len(unsigned int n)
+{
+	int	i;
+
+	i = 0;
+	while (n > 0)
+	{
+		n = n / 2;
+		i++;
+	}
+	return (i);
+}
+
 static void	radix_bitwise(t_stack **list_a, t_stack **list_b, int n, int i)
 {
 	int	j;

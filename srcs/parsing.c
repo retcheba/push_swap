@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_cmpt_word(char **stack)
+static int	ft_cmpt_word(char **stack)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_cmpt_word(char **stack)
 	return (i);
 }
 
-void	ft_free_stack(char **stack)
+static void	ft_free_stack(char **stack)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ void	ft_free_stack(char **stack)
 	free(stack);
 }
 
-char	*ft_merge(char **argv)
+static char	*ft_merge(char **argv)
 {
 	int		i;
 	char	*str;
