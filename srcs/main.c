@@ -6,40 +6,50 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:41:59 by retcheba          #+#    #+#             */
-/*   Updated: 2022/09/20 09:52:07 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:20:25 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	order_is_correct(t_stack *list, int n)
+static void	ft_parsing_all(t_stack **list_a, t_stack **list_b, char **argv)
 {
-	int i;
+	*list_a = ft_parsing(*list_a, argv);
+	*list_b = ft_parsing(*list_b, argv);
+}
 
-	i = 1;
-	while (i < n)
+static void	ft_choose_algo(t_stack *list_a, t_stack *list_b)
+{
+	unsigned int	n;
+
+	ft_free_list(list_b);
+	list_b = NULL;
+	n = len_list(list_a);
+	index_list(list_a, n);
+	if (!(order_is_correct(list_a, n)) && n > 1)
 	{
-		if (list->nb > list->next->nb)
-			return (0);
-		list = list->next;
-		i++;
+		if (n == 2)
+			list_a = ft_sa(list_a);
+		else if (n == 3)
+			list_a = algo_for_3(list_a, n);
+		else if (n > 3 && n <= 25)
+			list_a = algo_diy(list_a, list_b, n);
+		else if (n > 25)
+			list_a = radix_bin(list_a, list_b, n);
 	}
-	return (1);
+	ft_free_list(list_a);
 }
 
 int	main(int argc, char **argv)
 {
-	unsigned int n;
-	t_stack	*list_a;
-	t_stack *list_b;
+	t_stack			*list_a;
+	t_stack			*list_b;
 
-	if (argc > 1)
+	if (argc > 1 && !(argv_is_ok(argv)))
 	{
-		n = 0;
 		list_a = NULL;
 		list_b = NULL;
-		list_a = ft_parsing(list_a, argv);
-		list_b = ft_parsing(list_b, argv);
+		ft_parsing_all(&list_a, &list_b, argv);
 		if (list_a == NULL || list_b == NULL)
 		{
 			write(2, "Error\n", 6);
@@ -52,22 +62,7 @@ int	main(int argc, char **argv)
 			write(2, "Error\n", 6);
 			return (0);
 		}
-		ft_free_list(list_b);
-		list_b = NULL;
-		n = len_list(list_a);
-		index_list(list_a, n);
-		if (!(order_is_correct(list_a, n)) && n > 1)
-		{
-			if (n == 2)
-				list_a = ft_sa(list_a);
-			else if (n == 3)
-				list_a = algo_for_3(list_a, n);
-			else if (n > 3 && n <= 25)
-				list_a = algo_DIY(list_a, list_b, n);
-			else if (n > 25)
-				list_a = radix_bin(list_a, list_b, n);
-		}
-		ft_free_list(list_a);
+		ft_choose_algo(list_a, list_b);
 	}
 	else
 		write(2, "Error\n", 6);

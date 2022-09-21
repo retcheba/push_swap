@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:22:47 by retcheba          #+#    #+#             */
-/*   Updated: 2022/09/20 08:00:40 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:11:31 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_cmpt_word(char **stack)
 	return (i);
 }
 
-void ft_free_stack(char **stack)
+void	ft_free_stack(char **stack)
 {
 	int	i;
 
@@ -37,10 +37,10 @@ void ft_free_stack(char **stack)
 
 char	*ft_merge(char **argv)
 {
-	int	i;
-	char *str;
-	char *tmp1;
-	char *tmp2;
+	int		i;
+	char	*str;
+	char	*tmp1;
+	char	*tmp2;
 
 	str = malloc(sizeof(char) * 2);
 	str[0] = ' ';
@@ -62,9 +62,9 @@ char	*ft_merge(char **argv)
 
 t_stack	*ft_parsing(t_stack *list_a, char **argv)
 {
-	int	i;
-	char *str;
-	char **stack;
+	int		i;
+	char	*str;
+	char	**stack;
 
 	str = ft_merge(argv);
 	if (!(is_only_numbers(str)))

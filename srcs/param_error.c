@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 08:09:53 by retcheba          #+#    #+#             */
-/*   Updated: 2022/09/20 09:43:59 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:09:25 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_not_duplicates(t_stack *list_a, t_stack *list_b)
 {
-	t_stack *begin;
-	int	count;
+	t_stack	*begin;
+	int		count;
 
 	count = 0;
 	begin = list_b;
@@ -44,72 +44,41 @@ int	is_only_numbers(char *str)
 	while (str[i])
 	{
 		if (str[i] != 32 && !(str[i] >= '0' && str[i] <= '9')
-		&& !(!(str[i - 1] >= '0' && str[i - 1] <= '9') && str[i] == '-' && (str[i + 1] >= '0' && str[i + 1] <= '9'))
-		&& !(!(str[i - 1] >= '0' && str[i - 1] <= '9') && str[i] == '+' && (str[i + 1] >= '0' && str[i + 1] <= '9')))
+			&& !(!(str[i - 1] >= '0' && str[i - 1] <= '9') && str[i] == '-'
+				&& (str[i + 1] >= '0' && str[i + 1] <= '9'))
+			&& !(!(str[i - 1] >= '0' && str[i - 1] <= '9') && str[i] == '+'
+				&& (str[i + 1] >= '0' && str[i + 1] <= '9')))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	is_an_int(char **stack)
+int	order_is_correct(t_stack *list, int n)
 {
 	int	i;
-	int	j;
-	int	count;
-	int	n;
-	char max[10] = "7463847412";
-	char min[10] = "8463847412";
 
-	i = 0;
-	while (stack[i])
+	i = 1;
+	while (i < n)
 	{
-		j = 0;
-		n = 0;
-		count = 0;
-		while (stack[i][j] == ' ' || (stack[i][j] >= '\t' && stack[i][j] <= '\r'))
-			j++;
-		if (stack[i][j] == '+' || stack[i][j] == '-')
-		{
-			if (stack[i][j] == '-')
-				n++;
-			j++;
-		}
-		while (stack[i][j] == '0')
-			j++;
-		while (stack[i][j] >= '0' && stack[i][j] <= '9')
-		{
-			j++;
-			count++;
-		}
-		if (count > 10)
+		if (list->nb > list->next->nb)
 			return (0);
-		else if (count == 10)
-		{
-			if (n == 0)
-			{
-				while (count > 0)
-				{
-					if (stack[i][j - count] > max[count - 1])
-						return (0);
-					else if (stack[i][j - count] < max[count - 1])
-						break;
-					count--;
-				}
-			}
-			else
-			{
-				while (count > 0)
-				{
-					if (stack[i][j - count] > min[count - 1])
-						return (0);
-					else if (stack[i][j - count] < min[count - 1])
-						break;
-					count--;
-				}
-			}
-		}
+		list = list->next;
 		i++;
 	}
 	return (1);
+}
+
+int	argv_is_ok(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (argv[i][0] == '\0')
+			return (1);
+		i++;
+	}
+	return (0);
 }

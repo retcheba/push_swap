@@ -6,13 +6,13 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:32:27 by retcheba          #+#    #+#             */
-/*   Updated: 2022/09/20 01:53:40 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:00:19 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *algo_DIY(t_stack *list_a, t_stack *list_b, unsigned int n)
+t_stack	*algo_diy(t_stack *list_a, t_stack *list_b, unsigned int n)
 {
 	unsigned int	i;
 

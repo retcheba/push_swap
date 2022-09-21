@@ -1,4 +1,4 @@
-SRCS		= main.c radix_bin.c chained_list.c index_list.c parsing.c push_swap_utils.c algo_for_3.c algo_DIY.c param_error.c
+SRCS		= main.c radix_bin.c chained_list.c index_list.c parsing.c push_swap_utils.c algo_for_3.c algo_diy.c param_error.c param_error2.c
 OBJS		= $(addprefix srcs/, $(SRCS:.c=.o))
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror 

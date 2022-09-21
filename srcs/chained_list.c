@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 17:03:40 by retcheba          #+#    #+#             */
-/*   Updated: 2022/09/18 22:51:27 by retcheba         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:56:15 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack	*new_link(int nb, int index)
 
 t_stack	*add_link_bottom(t_stack *list, t_stack *new)
 {
-	t_stack *begin;
+	t_stack	*begin;
 
 	begin = list;
 	while (list->next)
@@ -53,8 +53,9 @@ t_stack	*add_link_top(t_stack *list, int nb, int index)
 
 int	len_list(t_stack *list)
 {
-	int	i = 1;
+	int	i;
 
+	i = 1;
 	while (list)
 	{
 		i++;
@@ -65,7 +66,7 @@ int	len_list(t_stack *list)
 
 void	ft_free_list(t_stack *list)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (list)
 	{
